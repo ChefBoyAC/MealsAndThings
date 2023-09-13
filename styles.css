@@ -7,6 +7,8 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+body *, body *:before, body *:after { box-sizing:content-box}
 @media(max-width:1200px){
     /* figure out how to do align-self and order. More examples*/
     .header .nav{
@@ -16,6 +18,25 @@
         margin-top:50%;
     }
 
+}
+@media screen and (min-width: 768px){
+    #meal{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    .meal-item{
+        margin: 0;
+    }
+    .meal-details{
+        width: 700px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #meal{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* header section*/
@@ -149,10 +170,10 @@
     line-height: 25px;
 }
 
-/* picture container */
+/* image container */
 .image{
     width:100%;
-    height:100vh;
+    height:auto;
     display: flex;
     position: relative;
     justify-content: space-evenly;
@@ -161,7 +182,8 @@
     background-color:#EBEBEB;
     opacity: 1.5;
     width:80%;
-    height:90vh;
+    height: 80vh;
+    align-content: center;
     display: flex;
     position:relative;
 }
@@ -169,6 +191,9 @@
     float: left;
     width: 50%;
     padding: 20px;
+    position:relative; 
+    top:80px;
+    left:80px;
 }
 .text-btn > *{
     margin-bottom: 20px;
@@ -215,12 +240,16 @@
     display:none;
 }
 img {
-    max-width:auto;
-    height: auto;
+    max-width: auto;
+    max-height: auto;
 }
 .carousel-dots {
     text-align: center;
     margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 20em;
+    width: 100%;
 }
 
 .carousel-dot {
@@ -239,16 +268,61 @@ img {
 
 
 
+.meal > p{
+    font-family:'Nunito Sans',sans-serif;
+    font-size: 400;
+    line-height: 25px;
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
+}
+.meal{
+    line-height: 10vh;
+}
+.meal > h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+#meal-card {
+    display:flex; 
+    min-width:fit-content;
+    height:auto;
+    justify-content: space-between;
+}
+.meal-btn{
+    background-color:orange;
+    color:white;
+    padding: 10px 20px;
+    border:none;
+    border-radius: 5px;
+    cursor:pointer;
+    font-size: 16px;
+}
+.meal-btn:hover {
+    background-color: darkorange;
+}
+.meal-item {
+    flex: 1;
+    width: 300px; /* Adjust card width as needed */
+    margin-right: 10px; /* Add spacing between cards */
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.meal-item img {
+    max-width: 100%;
+    max-height:80vh;
+    height: auto;
+}
+
 
 /*footer section*/
 .footer{
     background-color: #1e1e1e;
     width:100%;
     min-height: 50vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .footer-container{
     position: relative;
@@ -259,8 +333,6 @@ img {
     align-items:flex-start;
 }
 .footer-container div{
-    margin:0;
-    padding:0;
     width:25%;
     height:30vh;
     margin-top:50px;
